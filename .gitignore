@@ -205,3 +205,12 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Cookie Refresher Test Files
+test_*/
+*_test/
+output/
+logs/
+*.html
+*_cookie.txt
+*_inplace.txt
