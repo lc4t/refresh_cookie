@@ -4,19 +4,19 @@
 
 ## 功能特性
 
-- 支持 Netscape Cookie 格式（兼容 curl、wget 等工具）
-- 使用真实浏览器环境（Chromium）访问页面
-- 自动刷新页面以更新 Cookie
-- 自定义 HTTP Headers 支持
-- 反爬虫检测对抗（隐藏 webdriver 特征）
-- 完整日志记录
-- 输出渲染后的 HTML 内容
+-   支持 Netscape Cookie 格式（兼容 curl、wget 等工具）
+-   使用真实浏览器环境（Chromium）访问页面
+-   自动刷新页面以更新 Cookie
+-   自定义 HTTP Headers 支持
+-   反爬虫检测对抗（隐藏 webdriver 特征）
+-   完整日志记录
+-   输出渲染后的 HTML 内容
 
 ## 技术栈
 
-- **基础镜像:** mcr.microsoft.com/playwright/python:v1.40.0-jammy
-- **Python 版本:** 3.11+
-- **核心依赖:** Playwright
+-   **基础镜像:** mcr.microsoft.com/playwright/python:v1.40.0-jammy
+-   **Python 版本:** 3.11+
+-   **核心依赖:** Playwright
 
 ## 快速开始
 
@@ -82,21 +82,21 @@ docker run --rm \
 
 ### 必需参数
 
-| 参数名 | 说明 | 示例 |
-|--------|------|------|
-| `URL` | 目标网址 | `https://example.com` |
-| `COOKIE_FILE` | 输入 Cookie 文件路径 | `/input/cookie.txt` |
+| 参数名          | 说明                                          | 示例                     |
+| --------------- | --------------------------------------------- | ------------------------ |
+| `URL`           | 目标网址                                      | `https://example.com`    |
+| `COOKIE_FILE`   | 输入 Cookie 文件路径                          | `/input/cookie.txt`      |
 | `OUTPUT_COOKIE` | 输出 Cookie 文件路径（可与 COOKIE_FILE 相同） | `/output/new_cookie.txt` |
-| `OUTPUT_HTML` | 输出 HTML 文件路径 | `/output/page.html` |
+| `OUTPUT_HTML`   | 输出 HTML 文件路径                            | `/output/page.html`      |
 
 ### 可选参数
 
-| 参数名 | 默认值 | 说明 |
-|--------|--------|------|
-| `WAIT_TIME` | 5 | 首次加载等待时间（秒） |
-| `REFRESH_DELAY` | 5 | 刷新后等待时间（秒） |
-| `CUSTOM_HEADERS` | `{}` | 自定义 HTTP Headers（JSON 格式） |
-| `LOG_FILE` | stdout | 日志输出路径 |
+| 参数名           | 默认值 | 说明                             |
+| ---------------- | ------ | -------------------------------- |
+| `WAIT_TIME`      | 5      | 首次加载等待时间（秒）           |
+| `REFRESH_DELAY`  | 5      | 刷新后等待时间（秒）             |
+| `CUSTOM_HEADERS` | `{}`   | 自定义 HTTP Headers（JSON 格式） |
+| `LOG_FILE`       | stdout | 日志输出路径                     |
 
 ## 使用示例
 
@@ -139,10 +139,11 @@ docker run --rm \
 ```
 
 **注意事项：**
-- `COOKIE_FILE` 和 `OUTPUT_COOKIE` 可以是同一个文件
-- 挂载时**不要**使用 `:ro`（只读）标志
-- 工具会先读取完整内容再写入，保证数据安全
-- **推荐挂载目录而非单个文件**，这样 Cookie 和 HTML 都能保存在同一位置
+
+-   `COOKIE_FILE` 和 `OUTPUT_COOKIE` 可以是同一个文件
+-   挂载时**不要**使用 `:ro`（只读）标志
+-   工具会先读取完整内容再写入，保证数据安全
+-   **推荐挂载目录而非单个文件**，这样 Cookie 和 HTML 都能保存在同一位置
 
 ### 使用自定义 Headers
 
@@ -197,13 +198,13 @@ domain    flag    path    secure    expiration    name    value
 
 **字段说明：**
 
-- `domain`: Cookie 所属域名（如 `.example.com`）
-- `flag`: 是否对所有子域有效（`TRUE` 或 `FALSE`）
-- `path`: Cookie 路径（通常为 `/`）
-- `secure`: 是否仅 HTTPS 传输（`TRUE` 或 `FALSE`）
-- `expiration`: 过期时间（Unix 时间戳，0 表示会话 Cookie）
-- `name`: Cookie 名称
-- `value`: Cookie 值
+-   `domain`: Cookie 所属域名（如 `.example.com`）
+-   `flag`: 是否对所有子域有效（`TRUE` 或 `FALSE`）
+-   `path`: Cookie 路径（通常为 `/`）
+-   `secure`: 是否仅 HTTPS 传输（`TRUE` 或 `FALSE`）
+-   `expiration`: 过期时间（Unix 时间戳，0 表示会话 Cookie）
+-   `name`: Cookie 名称
+-   `value`: Cookie 值
 
 ### 示例文件
 
@@ -218,10 +219,12 @@ example.com     FALSE   /    FALSE    0             temp_data     test123
 ### 从浏览器导出 Cookie
 
 **Chrome 扩展：**
-- [Get cookies.txt LOCALLY](https://chrome.google.com/webstore/detail/get-cookiestxt-locally/)
+
+-   [Get cookies.txt LOCALLY](https://chrome.google.com/webstore/detail/get-cookiestxt-locally/)
 
 **Firefox 扩展：**
-- [cookies.txt](https://addons.mozilla.org/firefox/addon/cookies-txt/)
+
+-   [cookies.txt](https://addons.mozilla.org/firefox/addon/cookies-txt/)
 
 ## 工作流程
 
@@ -241,10 +244,10 @@ example.com     FALSE   /    FALSE    0             temp_data     test123
 
 工具内置以下反检测措施：
 
-- 禁用自动化控制特征：`--disable-blink-features=AutomationControlled`
-- 隐藏 `navigator.webdriver` 属性
-- 使用真实浏览器 User-Agent
-- 支持自定义 Referer 和其他 Headers
+-   禁用自动化控制特征：`--disable-blink-features=AutomationControlled`
+-   隐藏 `navigator.webdriver` 属性
+-   使用真实浏览器 User-Agent
+-   支持自定义 Referer 和其他 Headers
 
 ## 常见问题
 
@@ -312,12 +315,12 @@ refresh_cookie/
 
 项目通过 GitHub Actions 自动构建并发布 Docker 镜像到 GitHub Container Registry (ghcr.io)。
 
-| 标签 | 说明 | 示例 |
-|------|------|------|
-| `latest` | 最新的主分支构建 | `ghcr.io/lc4t/refresh_cookie:latest` |
-| `main` | 主分支最新版本 | `ghcr.io/lc4t/refresh_cookie:main` |
-| `dev` | 开发分支最新版本 | `ghcr.io/lc4t/refresh_cookie:dev` |
-| `v*` | 发布版本（如 v1.0.0） | `ghcr.io/lc4t/refresh_cookie:v1.0.0` |
+| 标签     | 说明                  | 示例                                 |
+| -------- | --------------------- | ------------------------------------ |
+| `latest` | 最新的主分支构建      | `ghcr.io/lc4t/refresh_cookie:latest` |
+| `main`   | 主分支最新版本        | `ghcr.io/lc4t/refresh_cookie:main`   |
+| `dev`    | 开发分支最新版本      | `ghcr.io/lc4t/refresh_cookie:dev`    |
+| `v*`     | 发布版本（如 v1.0.0） | `ghcr.io/lc4t/refresh_cookie:v1.0.0` |
 
 ### 拉取镜像
 
@@ -335,23 +338,24 @@ docker pull ghcr.io/lc4t/refresh_cookie:dev
 ### 平台支持
 
 镜像支持以下平台：
-- `linux/amd64` - x86_64 架构（Intel/AMD）
-- `linux/arm64` - ARM64 架构（Apple Silicon, ARM 服务器）
+
+-   `linux/amd64` - x86_64 架构（Intel/AMD）
+-   `linux/arm64` - ARM64 架构（Apple Silicon, ARM 服务器）
 
 ## CI/CD
 
 项目使用 GitHub Actions 自动化构建流程：
 
-- **自动触发：** 推送到 main/dev 分支，或创建版本标签时自动构建
-- **多平台构建：** 同时构建 amd64 和 arm64 架构
-- **自动发布：** 构建成功后自动推送到 GitHub Container Registry
-- **缓存优化：** 使用 GitHub Actions Cache 加速构建
+-   **自动触发：** 推送到 main/dev 分支，或创建版本标签时自动构建
+-   **多平台构建：** 同时构建 amd64 和 arm64 架构
+-   **自动发布：** 构建成功后自动推送到 GitHub Container Registry
+-   **缓存优化：** 使用 GitHub Actions Cache 加速构建
 
 查看构建状态：[Actions](https://github.com/lc4t/refresh_cookie/actions)
 
 ## 许可证
 
-MIT License
+Apache License
 
 ## 贡献
 
@@ -359,5 +363,5 @@ MIT License
 
 ## 致谢
 
-- [Playwright](https://playwright.dev/) - 强大的浏览器自动化工具
-- [Microsoft Playwright Docker Images](https://mcr.microsoft.com/en-us/product/playwright/python/about)
+-   [Playwright](https://playwright.dev/) - 强大的浏览器自动化工具
+-   [Microsoft Playwright Docker Images](https://mcr.microsoft.com/en-us/product/playwright/python/about)

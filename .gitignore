@@ -209,7 +209,6 @@ __marimo__/
 # Cookie Refresher Test Files
 test_*/
 *_test/
-bilibili_test/
 output/
 logs/
 *.html
