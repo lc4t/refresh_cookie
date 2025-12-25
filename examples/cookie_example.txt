@@ -1,0 +1,20 @@
+# Netscape HTTP Cookie File
+# https://curl.se/docs/http-cookies.html
+# This is an example file demonstrating the Netscape cookie format
+# Format: domain    flag    path    secure    expiration    name    value
+
+# Example cookies for example.com
+.example.com	TRUE	/	FALSE	1735689600	session_id	abc123def456ghi789
+.example.com	TRUE	/	TRUE	1767225600	auth_token	xyz789secure_token_example
+example.com	FALSE	/	FALSE	0	temp_session	temporary_data_12345
+
+# Example cookies for another domain
+.api.example.com	TRUE	/api/v1	TRUE	1750000000	api_key	sk_live_example_key_123456789
+.api.example.com	TRUE	/	FALSE	1740000000	user_id	user_abc123
+
+# Session cookie (expiration = 0)
+www.example.com	FALSE	/dashboard	FALSE	0	dashboard_view	grid_view
+
+# Note: Fields are separated by TAB characters, not spaces
+# Secure cookies (secure=TRUE) will only be sent over HTTPS
+# Flag=TRUE means cookie is valid for all subdomains starting with domain
